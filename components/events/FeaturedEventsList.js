@@ -8,7 +8,7 @@ const FeaturedEventsList = (props) => {
   return (
     <ul className={styles.list}>
       {
-        featuredEvents.map(eventData => <FeaturedEventItem {...eventData}/>)
+        featuredEvents.map(eventData => <FeaturedEventItem {...eventData} key={eventData.id}/>)
       }
     </ul>
   )

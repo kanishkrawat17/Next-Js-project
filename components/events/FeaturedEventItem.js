@@ -1,5 +1,9 @@
 import React from "react";
-import Link from "next/link";
+import Button from "../ui/Button";
+import AddressIcon from "../icons/address-icon";
+import ArrowRightIcon from "../icons/arrow-right-icon";
+import DateIcon from "../icons/date-icon";
+
 import styles from "./featured-event-item.module.css";
 
 const FeaturedEventItem = (props) => {
@@ -20,14 +24,19 @@ const FeaturedEventItem = (props) => {
           <h2>{title}</h2>
         </div>
         <div className={styles["date"]}>
-          <time>Date: {formattedDate}</time>
+          <DateIcon />
+          <time>{formattedDate}</time>
         </div>
         <div className={styles["address"]}>
+          <AddressIcon />
           <address>{formattedAddress}</address>
         </div>
       </div>
       <div className={styles["actions"]}>
-        <Link href={exploreEventLink}>Explore event</Link>
+        <Button link={exploreEventLink}>
+          <span>Explore event</span>
+          <span><ArrowRightIcon/></span>
+        </Button>
       </div>
     </li>
   );
