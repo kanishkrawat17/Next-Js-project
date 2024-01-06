@@ -6,7 +6,7 @@ import DateIcon from "../icons/date-icon";
 
 import styles from "./featured-event-item.module.css";
 
-const FeaturedEventItem = (props) => {
+const EventItem = (props) => {
   const { title, date, location, id, image } = props;
   const exploreEventLink = `/events/${id}`;
   const formattedAddress = location.replace(",", "\n");
@@ -18,7 +18,7 @@ const FeaturedEventItem = (props) => {
 
   return (
     <li key={id} className={styles["item"]}>
-      <img src={`${image}`} alt={title} />
+      <img src={`/${image}`} alt={title} />
       <div className={styles["content"]}>
         <div className={styles["summary"]}>
           <h2>{title}</h2>
@@ -31,15 +31,17 @@ const FeaturedEventItem = (props) => {
           <AddressIcon />
           <address>{formattedAddress}</address>
         </div>
-      </div>
-      <div className={styles["actions"]}>
-        <Button link={exploreEventLink}>
-          <span>Explore event</span>
-          <span><ArrowRightIcon/></span>
-        </Button>
+        <div className={styles["actions"]}>
+          <Button link={exploreEventLink}>
+            <span>Explore event</span>
+            <span>
+              <ArrowRightIcon />
+            </span>
+          </Button>
+        </div>
       </div>
     </li>
   );
 };
 
-export default FeaturedEventItem;
+export default EventItem;

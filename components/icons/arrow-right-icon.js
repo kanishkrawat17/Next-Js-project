@@ -4,6 +4,9 @@ function ArrowRightIcon() {
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 20 20'
       fill='currentColor'
+      height={24}
+      width={24}
+      style={{marginLeft: '8px'}}
     >
       <path
         fillRule='evenodd'

@@ -1,18 +1,36 @@
 /** Event with an Id */
 import { useRouter } from "next/router";
-import FeaturedEventsList from "../../components/events/FeaturedEventsList";
-import { getEventById } from "../../data/dummy-data.js";
-
+import EventSummary from "../../components/event-detail/EventSummary";
+import EventLogistics from '../../components/event-detail/EventLogistics';
+import EventContent from "../../components/event-detail/EventContent";
+import ErrorAlert from "../../components/ui/ErrorAlert";
+import { getEventById } from "../../dummy-data";
 const EventDetailPage = () => {
   const router = useRouter();
-  const eventId = router.query?.eventId;
+
+  const eventId = router.query.eventId;
   const event = getEventById(eventId);
-  if(!event) return <p>No event found..!!</p>
+
+  if (!event) {
+    return (
+      <ErrorAlert>
+        <p>No event found..!!</p>
+      </ErrorAlert>
+    );
+  }
   /*Todo -> check lecture no. 161 and add the compoents*/
   return (
     <>
-      <h1>EventDetailPage</h1>
-      <FeaturedEventsList featuredEvents={[event]} />
+      <EventSummary title={event.title} />
+      <EventLogistics
+        date={event.date}
+        address={event.location}
+        image={event.image}
+        imageAlt={event.title}
+      />
+      <EventContent>
+        <p>{event.description}</p>
+      </EventContent>
     </>
   );
 };
