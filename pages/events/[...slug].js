@@ -1,5 +1,5 @@
 /** Event with filtered events. */
-
+import EventsSearch from '../../components/events/EventsSearch'
 const FilteredEvents = () => {
     return (
       <>
