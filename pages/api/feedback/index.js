@@ -1,12 +1,13 @@
 import fs from "fs";
 import path from "path";
+
 const handler = (req, res) => {
-  console.log(req.body, req.method, "Request");
   if (req.method == "POST") {
-    const { email, feedback } = req.body;
+    const { username, feedback } = req.body;
     const pathname = path.join(process.cwd(), "/db/feedback.json");
     const feedbackData = JSON.parse(fs.readFileSync(pathname, "utf-8")); // reading file synchronously.
-    feedbackData?.feedbacks?.push({ email, feedback });
+    const id = new Date().getTime().toString();
+    feedbackData?.feedbacks?.push({ username, feedback, id });
     fs.writeFileSync(pathname, JSON.stringify(feedbackData));
     res.status(200).json({ message: "Success sent feedback" });
   } else if(req.method == "GET") {
@@ -15,7 +16,7 @@ const handler = (req, res) => {
 
     return res.status(200).json({
         data: feedbackData
-    })
+    });
   }
 };
 
