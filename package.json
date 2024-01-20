@@ -5,11 +5,18 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "start:prod": "NODE_ENV=production node ./pages/_app.js",
+    "dev:watch": "nodemon -e js,jsx,ts,tsx,json -w . -x \"npm run build\"",
+    "start:watch": "npm run dev:watch & npm run start:prod",
+    "prod": "npm run dev:watch && npm run start"
   },
   "dependencies": {
     "next": "^13.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
   }
 }

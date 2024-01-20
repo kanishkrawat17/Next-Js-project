@@ -5,6 +5,7 @@ import styles from "./featured-events-list.module.css";
 const EventsList = (props) => {
   const { featuredEvents } = props;
 
+  console.log(featuredEvents, "featuredEvents--")
   return (
     <ul className={styles.list}>
       {
